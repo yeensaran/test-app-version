@@ -24,10 +24,4 @@ jobs:
           fetch-depth: 0
 
       - name: Build image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: "./docker/Dockerfile.client"
-          push: false
-          build-args: |
-            APP_TAG_VERSION=${{ env.DOCKER_IMAGE_TAG }}
+        run: docker build --progress=plain --build-arg APP_TAG_VERSION=${{ env.DOCKER_IMAGE_TAG }} -f ./docker/Dockerfile.client .
