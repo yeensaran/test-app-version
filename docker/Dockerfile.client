@@ -4,4 +4,4 @@ ARG APP_TAG_VERSION
 ENV APP_VERSION=${APP_TAG_VERSION}
 
 RUN echo "Testing APP_VERSION: $APP_VERSION" && \
-  node -e "console.log('process.env.APP_VERSION:', process.env.APP_VERSION);"
+  node -e "console.log('(Client) => process.env.APP_VERSION:', process.env.APP_VERSION);"
