@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
     try {
       console.log(' =====>> |Check App Version| <<=====');
 
-      const latestClientVersion = process.env.APP_VERSION || '3.0.1';
+      const latestClientVersion = process.env.APP_VERSION || '3.0.2';
 
       if (!latestClientVersion) {
         console.log('--- No client version found ---');
