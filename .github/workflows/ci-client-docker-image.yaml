@@ -11,6 +11,7 @@ on:
 
 env:
   DOCKER_IMAGE_TAG: "app-version-v.1.0.0"
+  MOCK_VERSION: "1.2.3"
 
 jobs:
   setup-build-deploy:
@@ -24,4 +25,4 @@ jobs:
           fetch-depth: 0
 
       - name: Build image
-        run: docker build --progress=plain --build-arg APP_TAG_VERSION=${{ env.DOCKER_IMAGE_TAG }} -f ./docker/Dockerfile.client .
+        run: docker build --progress=plain --build-arg APP_TAG_VERSION=${{ env.DOCKER_IMAGE_TAG }} --build-arg MOCK_VERSION=${{ env.MOCK_VERSION }} -f ./docker/Dockerfile.client .
