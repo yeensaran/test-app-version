@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - "docker/Dockerfile.client"
-      - ".github/workflows/ci-lms-client-docker-image.yaml"
+      - ".github/workflows/ci-client-docker-image.yaml"
 
 env:
   DOCKER_IMAGE_TAG: "app-version-v.1.0.0"
