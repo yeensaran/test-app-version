@@ -5,15 +5,3 @@ ENV APP_VERSION=${APP_TAG_VERSION}
 
 RUN echo "Testing APP_VERSION: $APP_VERSION" && \
   node -e "console.log('process.env.APP_VERSION:', process.env.APP_VERSION);"
-
-WORKDIR /app
-
-COPY packages/api/package*.json ./
-RUN npm ci
-
-COPY packages/api/ .
-
-EXPOSE 3001
-
-CMD ["npm", "start"]
-
