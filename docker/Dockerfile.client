@@ -1,10 +1,30 @@
 FROM node:20.18 AS build-env
 ARG APP_TAG_VERSION
-ARG MOCK_VERSION
 
-ENV NEXT_PUBLIC_APP_VERSION=${APP_TAG_VERSION}
-ENV MOCK_VERSION=${MOCK_VERSION}
+ENV APP_VERSION=${APP_TAG_VERSION}
 
-RUN echo "Testing NEXT_PUBLIC_APP_VERSION: $NEXT_PUBLIC_APP_VERSION, MOCK_VERSION: $MOCK_VERSION" && \
-  node -e "console.log('process.env.NEXT_PUBLIC_APP_VERSION:', process.env.NEXT_PUBLIC_APP_VERSION); console.log('process.env.MOCK_VERSION:', process.env.MOCK_VERSION);"
+RUN echo "Testing APP_VERSION: $APP_VERSION" && \
+  node -e "console.log('process.env.APP_VERSION:', process.env.APP_VERSION);"
+
+WORKDIR /app
+
+COPY packages/client/package*.json ./
+RUN npm ci
+
+COPY packages/client/ .
+RUN npm run build
+
+FROM node:20.18 AS production
+
+WORKDIR /app
+
+COPY --from=build-env /app/package*.json ./
+RUN npm ci --only=production
+
+COPY --from=build-env /app/.next ./.next
+COPY --from=build-env /app/public ./public
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
 

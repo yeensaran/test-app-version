@@ -1,4 +1,4 @@
-name: Cloud build client to image registry
+name: Cloud build api to image registry
 
 on:
   pull_request:
@@ -6,9 +6,9 @@ on:
     branches:
       - main
     paths:
-      - "docker/Dockerfile.client"
-      - ".github/workflows/ci-client-docker-image.yaml"
-      - "packages/client/**"
+      - "docker/Dockerfile.api"
+      - ".github/workflows/ci-api-docker-image.yaml"
+      - "packages/api/**"
 
 env:
   DOCKER_IMAGE_TAG: "app-version-v.1.0.0"
@@ -25,4 +25,4 @@ jobs:
           fetch-depth: 0
 
       - name: Build image
-        run: docker build --progress=plain --build-arg APP_TAG_VERSION=${{ env.DOCKER_IMAGE_TAG }} -f ./docker/Dockerfile.client .
+        run: docker build --progress=plain --build-arg APP_TAG_VERSION=${{ env.DOCKER_IMAGE_TAG }} -f ./docker/Dockerfile.api .
