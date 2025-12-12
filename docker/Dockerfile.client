@@ -1,0 +1,11 @@
+FROM base AS build-env
+ARG APP_TAG_VERSION
+
+ENV APP_TAG_VERSION "${APP_TAG_VERSION}"
+ENV NEXT_PUBLIC_APP_VERSION "${APP_TAG_VERSION}"
+
+
+RUN export $(cat .env | xargs) && \
+  echo "Testing NEXT_PUBLIC_APP_VERSION: $NEXT_PUBLIC_APP_VERSION" && \
+  node -e "console.log('NEXT_PUBLIC_APP_VERSION in process.env:', process.env.NEXT_PUBLIC_APP_VERSION);"
+
