@@ -2,7 +2,6 @@ FROM node:20.18 AS build-env
 ARG APP_TAG_VERSION
 
 ENV APP_VERSION=${APP_TAG_VERSION}
-E
 
 RUN echo "Testing APP_VERSION: $APP_VERSION" && \
   node -e "console.log('process.env.APP_VERSION:', process.env.APP_VERSION);"
