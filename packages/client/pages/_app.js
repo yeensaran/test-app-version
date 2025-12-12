@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-  console.log('App Version:', process.env.NEXT_PUBLIC_APP_VERSION);
+  console.log('My App Version:', process.env.APP_VERSION);
   return <Component {...pageProps} />
 }
 

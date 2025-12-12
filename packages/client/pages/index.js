@@ -24,6 +24,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   console.log("loading: ", loading);
+  console.log("APP_VERSION: ", process.env.APP_VERSION);
 
   useEffect(() => {
 
