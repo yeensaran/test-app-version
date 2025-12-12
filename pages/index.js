@@ -23,6 +23,8 @@ export default function Home() {
   const [shipments, setShipments] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  console.log("loading: ", loading);
+
   useEffect(() => {
     fetch('/api/shipment/list')
       .then(res => res.json())
