@@ -8,5 +8,5 @@ export default function handler(req, res) {
   //     res.setHeader("Content-Type", "application/json");
   //     res.end(JSON.stringify(data));
   //   });
-  res.status(200).json({ name: 'John Doe' })
+  // res.status(200).json({ name: 'John Doe' })
 }
