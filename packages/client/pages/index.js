@@ -26,12 +26,21 @@ export default function Home() {
   console.log("loading: ", loading);
 
   useEffect(() => {
-    fetch('/api/shipment/list')
-      .then(res => res.json())
-      .then(data => {
-        setShipments(data)
-        setLoading(false)
-      })
+
+    setInterval(() => {
+      setLoading(false)
+      setShipments(
+        [{
+          id: '1',
+          item: 'Laptop',
+          status: 'In Transit',
+          source: 'New York, NY',
+          destination: 'San Francisco, CA',
+          tracking_number: 'NYC123456789',
+          description: '15-inch MacBook Pro'
+        }]);
+    }, 3000);
+
   }, [])
 
   return (
