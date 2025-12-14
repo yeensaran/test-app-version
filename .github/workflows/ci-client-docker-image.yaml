@@ -1,14 +1,22 @@
 name: Cloud build client to image registry
 
 on:
-  pull_request:
-    types: [opened, synchronize]
-    branches:
-      - main
+  push:
+    tags:
+      - test-v*  # trigger เมื่อ push tag เช่น test-v1.0.0, test-v1.2.3
     paths:
       - "docker/Dockerfile.client"
       - ".github/workflows/ci-client-docker-image.yaml"
       - "packages/client/**"
+
+  # pull_request:
+  #   types: [opened, synchronize]
+  #   branches:
+  #     - main
+  #   paths:
+  #     - "docker/Dockerfile.client"
+  #     - ".github/workflows/ci-client-docker-image.yaml"
+  #     - "packages/client/**"
 
 env:
   DOCKER_IMAGE_TAG: ""
